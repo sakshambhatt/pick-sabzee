@@ -10,13 +10,7 @@ async function initializeDbConnection() {
     console.log("connected to db!");
   } catch (err) {
     console.error("db connection failed");
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "db connection failed",
-        errorMessage: err,
-      });
+    throw new Error("db connection failed: ", err);
   }
 }
 module.exports = initializeDbConnection;

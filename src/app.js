@@ -13,10 +13,19 @@ app.use(cors());
 app.use(bodyParser.json());
 
 (async function () {
-  await initializeDbConnection();
+  try {
+    await initializeDbConnection();
+  } catch (err) {
+    console.error(err);
+  }
 })();
 
 app.use("/categories", categories);
+
+/* endpoints TODO:
+ *  create/ read/ update sabzee
+ *  search endpoint where you give sabzee name and get sabzee
+ */
 
 app.get("/", (req, res) => {
   res.send("Hello Sabzee app!");
