@@ -38,5 +38,6 @@ app.use(errorHandler);
 app.use(notFoundHandler);
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`server started on port: ${port}`);
 });

@@ -18,5 +18,6 @@ module.exports = {
         omitLastInOneLineBlock: true,
       },
     ],
+    "no-console": ["warn", { allow: ["warn", "error"] }],
   },
 };

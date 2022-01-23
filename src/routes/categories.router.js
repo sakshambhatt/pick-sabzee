@@ -1,8 +1,8 @@
 const express = require("express");
-
 const router = express.Router();
-const { Category } = require("../models/categories.model");
-const findCategoryById = require("../middleware/findCategoryById.middleware");
+const { Category } = require("../models/categories.model.js");
+const findCategoryById = require("../middleware/findCategoryById.middleware.js");
+const { extend } = require("lodash");
 
 router
   .route("/")
@@ -45,16 +45,30 @@ router
   });
 
 // middleware to get category by categoryId
-router.route("categoryId", findCategoryById);
+router.use("/:categoryId", findCategoryById);
 
 router
   .route("/:categoryId")
   // get category by ID
   .get((req, res) => {
     const { category } = req;
-
-    category._v = undefined;
     res.status(200).json({ success: true, category });
+  })
+  // updating category by ID
+  .post(async (req, res) => {
+    const categoryUpdates = req.body;
+    let { category } = req;
+    category = extend(category, categoryUpdates);
+    try {
+      category = await category.save();
+      res.status(200).json({ success: true, category });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        message: "error while updating the category",
+        errorMessage: err,
+      });
+    }
   });
-// updating category by ID
+
 module.exports = router;
