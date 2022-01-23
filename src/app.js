@@ -11,12 +11,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// eslint-disable-next-line func-names
 (async function () {
   try {
     await initializeDbConnection();
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
   }
 })();
@@ -40,6 +38,5 @@ app.use(errorHandler);
 app.use(notFoundHandler);
 
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
   console.log(`server started on port: ${port}`);
 });

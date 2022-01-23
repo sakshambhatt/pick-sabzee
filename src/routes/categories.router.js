@@ -52,7 +52,7 @@ router
   // get category by ID
   .get((req, res) => {
     const { category } = req;
-    // eslint-disable-next-line no-underscore-dangle
+
     category._v = undefined;
     res.status(200).json({ success: true, category });
   });
