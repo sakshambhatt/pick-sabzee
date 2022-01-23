@@ -1,6 +1,6 @@
 const { Veggie } = require("../models/veggies.model.js");
 
-async function findVeggieById (req, res, next) {
+async function findVeggieById(req, res, next) {
   const { veggieId } = req.params;
   try {
     const veggie = await Veggie.findById(veggieId);

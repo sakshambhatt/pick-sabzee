@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { dbUri } = require("../configs/config");
 
-async function initializeDbConnection () {
+async function initializeDbConnection() {
   try {
     await mongoose.connect(dbUri, {
       useUnifiedTopology: true,

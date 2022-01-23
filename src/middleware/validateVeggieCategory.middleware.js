@@ -1,6 +1,6 @@
 const { allowedCategories } = require("../configs/config");
 
-function validateVeggieCategory (req, res, next) {
+function validateVeggieCategory(req, res, next) {
   const { category } = req.body;
   const allowedCategoriesSet = new Set(allowedCategories);
   if (allowedCategoriesSet.has(category)) {

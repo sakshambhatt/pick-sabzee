@@ -1,6 +1,6 @@
 const { Category } = require("../models/categories.model.js");
 
-async function findCategoryById (req, res, next) {
+async function findCategoryById(req, res, next) {
   const { categoryId } = req.params;
   try {
     const category = await Category.findById(categoryId);
