@@ -4,5 +4,6 @@ function errorHandler(err, req, res, next) {
     message: "server ran into an error",
     stack: err.stack,
   });
+  next();
 }
 module.exports = { errorHandler };

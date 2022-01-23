@@ -1,7 +1,8 @@
 const express = require("express");
+
 const router = express.Router();
-const { Category } = require("../models/categories.model.js");
-const findCategoryById = require("../middleware/findCategoryById.middleware.js");
+const { Category } = require("../models/categories.model");
+const findCategoryById = require("../middleware/findCategoryById.middleware");
 
 router
   .route("/")
@@ -28,7 +29,6 @@ router
       description,
       bannerImage,
     });
-    console.log(newCategory);
     try {
       const savedCategory = await newCategory.save();
       res.status(200).json({
@@ -51,9 +51,9 @@ router
   .route("/:categoryId")
   // get category by ID
   .get((req, res) => {
-    const category = req.category;
-    console.log(category);
-    // category._v = undefined;
+    const { category } = req;
+    // eslint-disable-next-line no-underscore-dangle
+    category._v = undefined;
     res.status(200).json({ success: true, category });
   });
 // updating category by ID

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { dbUri } = require("../configs/config.js");
+const { dbUri } = require("../configs/config");
 
 async function initializeDbConnection() {
   try {
@@ -7,9 +7,7 @@ async function initializeDbConnection() {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
-    console.log("connected to db!");
   } catch (err) {
-    console.error("db connection failed");
     throw new Error("db connection failed: ", err);
   }
 }
