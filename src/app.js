@@ -1,22 +1,31 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const initializeDbConnection = require("./db/db.connect.js");
-const categories = require("./routes/categories.router.js");
-const { errorHandler } = require("./middleware/errorHandler.middleware.js");
-const { notFoundHandler } = require("./middleware/404.middleware.js");
-const { port } = require("./configs/config.js");
+const initializeDbConnection = require("./db/db.connect");
+const categories = require("./routes/categories.router");
+const veggies = require("./routes/veggies.router");
+const search = require("./routes/search.router");
+const { errorHandler } = require("./middleware/errorHandler.middleware");
+const { notFoundHandler } = require("./middleware/404.middleware");
+const { port } = require("./configs/config");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 (async function () {
-  await initializeDbConnection();
+  try {
+    await initializeDbConnection();
+  } catch (err) {
+    console.error(err);
+  }
 })();
 
 app.use("/categories", categories);
+
+app.use("/veggies", veggies);
+
+app.use("/search", search);
 
 app.get("/", (req, res) => {
   res.send("Hello Sabzee app!");
@@ -30,5 +39,6 @@ app.use(errorHandler);
 app.use(notFoundHandler);
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`server started on port: ${port}`);
 });
