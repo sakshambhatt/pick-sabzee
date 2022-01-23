@@ -12,7 +12,7 @@ async function findCategoryById (req, res, next) {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "error while retrieving product",
+      message: "error while retrieving category",
       errorMessage: err,
     });
   }

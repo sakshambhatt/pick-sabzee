@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const { allowedCategories } = require("../configs/config");
 const { Schema } = mongoose;
 const CategorySchema = new Schema(
   {
     name: {
       type: String,
-      enum: ["Green leafy", "Flower", "Fruit", "Stem", "Root"],
+      enum: allowedCategories,
       required: "Every veggie must have a type",
       unique: true,
     },

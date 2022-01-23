@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const initializeDbConnection = require("./db/db.connect");
 const categories = require("./routes/categories.router");
+const veggies = require("./routes/veggies.router");
 const { errorHandler } = require("./middleware/errorHandler.middleware");
 const { notFoundHandler } = require("./middleware/404.middleware");
 const { port } = require("./configs/config");
@@ -20,6 +21,8 @@ app.use(bodyParser.json());
 })();
 
 app.use("/categories", categories);
+
+app.use("/veggies", veggies);
 
 /* endpoints TODO:
  *  create/ read/ update sabzee
