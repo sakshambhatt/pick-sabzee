@@ -27,11 +27,6 @@ app.use("/veggies", veggies);
 
 app.use("/search", search);
 
-/* endpoints TODO:
- *  create/ read/ update sabzee
- *  search endpoint where you give sabzee name and get sabzee
- */
-
 app.get("/", (req, res) => {
   res.send("Hello Sabzee app!");
 });
