@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Category } = require("../models/categories.model.js");
 const findCategoryById = require("../middleware/findCategoryById.middleware.js");
+const { Veggie } = require("../models/veggies.model.js");
 const { extend } = require("lodash");
 
 router
@@ -49,10 +50,13 @@ router.use("/:categoryId", findCategoryById);
 
 router
   .route("/:categoryId")
-  // get category by ID
-  .get((req, res) => {
+  // get veggies of category by ID
+  .get(async (req, res) => {
     const { category } = req;
-    res.status(200).json({ success: true, category });
+    const veggiesByCategory = await Veggie.find({
+      category: `${category.name}`,
+    });
+    res.status(200).json({ success: true, veggiesByCategory });
   })
   // updating category by ID
   .post(async (req, res) => {

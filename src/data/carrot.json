@@ -1,0 +1,13 @@
+{
+  "_id": "61ffc255f04d4df45bc412d1",
+  "name": "Carrot",
+  "regionalNames": ["Gajar", "Gaajar", "Ganjar", "Gaanjar"],
+  "description": "Roots that grow underground. Being favorite of bunnies, and the potential to make you see better are both hoaxes. But gaajar ka halwa is absolutely delicious.",
+  "goodImage": "https://res.cloudinary.com/dmetxifv4/image/upload/c_fit,h_400,q_auto:eco,w_400/v1637477352/veggies/carrot_vvm2dl.png",
+  "goodDescription": "Good ones tend to be firm, but not too firm.",
+  "badImage": "",
+  "category": "Root",
+  "created_at": "2022-02-06T12:43:01.511Z",
+  "updated_at": "2022-02-06T12:43:01.511Z",
+  "__v": 0
+}

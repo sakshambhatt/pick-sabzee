@@ -18,14 +18,22 @@ router.route("/").get(async (req, res) => {
       if (regionalSearchResult === null) {
         res.status(200).json({
           success: false,
-          veggie: {},
+          veggieId: "",
           message: `no veggie named ${q} found`,
         });
       } else {
-        res.status(200).json({ success: true, veggie: regionalSearchResult });
+        res.status(200).json({
+          success: true,
+          veggieId: regionalSearchResult._id,
+          message: "veggie found!",
+        });
       }
     } else {
-      res.status(200).json({ success: true, veggie: searchResult });
+      res.status(200).json({
+        success: true,
+        veggieId: searchResult._id,
+        message: "veggie found!",
+      });
     }
   } catch (err) {
     res.status(500).json({
